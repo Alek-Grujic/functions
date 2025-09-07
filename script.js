@@ -48,5 +48,13 @@ const upperFirstWord = function (str) {
   return [first.toUpperCase(), ...others].join(" ");
 };
 
-console.log(oneWord("Hello world"));
-console.log(upperFirstWord("Hello world"));
+// console.log(oneWord("Hello world"));
+// console.log(upperFirstWord("Hello world"));
+
+const transformed = function (str, fn) {
+  console.log(`Original string: ${str}`);
+  console.log(`Transformed string: ${fn(str)}`);
+};
+
+transformed("JavaScript is awsome!", upperFirstWord);
+transformed("JavaScript is awsome!", oneWord);
