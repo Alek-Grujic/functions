@@ -61,27 +61,55 @@
 
 // ----------------------------------
 
-const greet = function (greeting) {
-  return function (name) {
-    console.log(`${greeting} ${name}`);
-  };
+// const greet = function (greeting) {
+//   return function (name) {
+//     console.log(`${greeting} ${name}`);
+//   };
+// };
+
+// const greeterHey = greet("Hey");
+
+// greeterHey("Jonas");
+// greeterHey("Steven");
+
+// greet("Hello")("Jonas");
+
+// const greet = (greeting) => {
+//   return (name) => {
+//     console.log(`${greeting} ${name}`);
+//   };
+// };
+
+// const greeterHey = greet("hey");
+// greeterHey("Steven");
+
+// greeterHey("John");
+// greet("Hello")("Alex");
+
+// -----------------------------------
+
+const lufthausa = {
+  airline: "Lufthausa",
+  iataCode: "LH",
+  bookings: [],
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+    );
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+  },
 };
 
-const greeterHey = greet("Hey");
+lufthausa.book(239, "Jonas");
+lufthausa.book(5643, "John Smith");
+console.log(lufthausa);
 
-greeterHey("Jonas");
-greeterHey("Steven");
-
-greet("Hello")("Jonas");
-
-const greet = (greeting) => {
-  return (name) => {
-    console.log(`${greeting} ${name}`);
-  };
+const eurowings = {
+  airline: "Eurowings",
+  iataCode: "EW",
+  bookings: [],
 };
 
-const greeterHey = greet("hey");
-greeterHey("Steven");
+const book = lufthausa.book;
 
-greeterHey("John");
-greet("Hello")("Alex");
+book.call(eurowings, 23, "Sarah");
