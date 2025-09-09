@@ -39,22 +39,49 @@
 // console.log(flight);
 // console.log(jonas);
 
-const oneWord = function (str) {
-  return str.replace(/ /g, "").toLowerCase();
+// const oneWord = function (str) {
+//   return str.replace(/ /g, "").toLowerCase();
+// };
+
+// const upperFirstWord = function (str) {
+//   const [first, ...others] = str.split(" ");
+//   return [first.toUpperCase(), ...others].join(" ");
+// };
+
+// // console.log(oneWord("Hello world"));
+// // console.log(upperFirstWord("Hello world"));
+
+// const transformed = function (str, fn) {
+//   console.log(`Original string: ${str}`);
+//   console.log(`Transformed string: ${fn(str)}`);
+// };
+
+// transformed("JavaScript is awsome!", upperFirstWord);
+// transformed("JavaScript is awsome!", oneWord);
+
+// ----------------------------------
+
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
 };
 
-const upperFirstWord = function (str) {
-  const [first, ...others] = str.split(" ");
-  return [first.toUpperCase(), ...others].join(" ");
+const greeterHey = greet("Hey");
+
+greeterHey("Jonas");
+greeterHey("Steven");
+
+greet("Hello")("Jonas");
+
+const greet = (greeting) => {
+  return (name) => {
+    console.log(`${greeting} ${name}`);
+  };
 };
 
-// console.log(oneWord("Hello world"));
-// console.log(upperFirstWord("Hello world"));
+const greeterHey = greet("hey");
+greeterHey("Steven");
 
-const transformed = function (str, fn) {
-  console.log(`Original string: ${str}`);
-  console.log(`Transformed string: ${fn(str)}`);
-};
-
-transformed("JavaScript is awsome!", upperFirstWord);
-transformed("JavaScript is awsome!", oneWord);
+greeterHey("John");
+greet("Hello")("Alex");
