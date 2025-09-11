@@ -113,3 +113,11 @@ const eurowings = {
 const book = lufthausa.book;
 
 book.call(eurowings, 23, "Sarah");
+
+// bind method
+
+const bookEW = book.bind(eurowings);
+const bookLH = book.bind(lufthausa);
+
+bookEW(23, "Steven Williams");
+bookLH(87, "John Markusen");
