@@ -121,3 +121,15 @@ const bookLH = book.bind(lufthausa);
 
 bookEW(23, "Steven Williams");
 bookLH(87, "John Markusen");
+
+lufthausa.planes = 300;
+lufthausa.buyPlane = function () {
+  console.log(this);
+
+  this.planes++;
+  console.log(this.planes);
+};
+
+document
+  .querySelector(".buy")
+  .addEventListener("click", lufthausa.buyPlane.bind(lufthausa));
