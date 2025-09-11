@@ -133,3 +133,19 @@ lufthausa.buyPlane = function () {
 document
   .querySelector(".buy")
   .addEventListener("click", lufthausa.buyPlane.bind(lufthausa));
+
+// const addTax = (rate, value) => value + value * rate;
+
+// console.log(addTax(0.1, 200));
+
+function addTax(rate) {
+  return function (value) {
+    console.log(value + value * rate);
+  };
+}
+
+const other = addTax(0.2);
+
+other(200);
+
+addTax(0.1)(200);
