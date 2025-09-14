@@ -184,3 +184,34 @@ BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
 
 GOOD LUCK 😀
 */
+
+const promptWindow = document.querySelector(".promptWindow");
+
+const poll = {
+  question: "What is your favorite programming language?",
+  options: ["0: JavaScript", "1: Python", "2: Rust", "3: C"],
+  answers: new Array(4).fill(0),
+  registerNewAnswer() {},
+};
+
+for (let i = 0; i < poll.options.length; i++) {
+  console.log(poll.options[i]);
+  document.querySelector(`.option${i}`).textContent = poll.options[i];
+}
+
+const answerBtn = document.querySelector(".poll");
+answerBtn.addEventListener("click", function () {
+  promptWindow.classList.remove("hidden");
+});
+
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") {
+    promptWindow.classList.add("hidden");
+  }
+});
+
+document.addEventListener("click", function (e) {
+  if (!promptWindow.contains(e.target) && !answerBtn.contains(e.target)) {
+    promptWindow.classList.add("hidden");
+  }
+});

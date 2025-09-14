@@ -21,6 +21,30 @@
         text-align: center;
         color: white;
       }
+      .promptWindow {
+        background-color: white;
+        padding: 10px 20px;
+        position: absolute;
+        top: 110px;
+        right: 10px;
+      }
+      .hidden {
+        display: none;
+      }
+      .questionPoll{
+        font-family: sans-serif;
+        color: black;
+        font-size: 20px;
+      }
+      ul {
+        list-style: none;
+        padding: 0 0 0 20px;
+      }
+      li {
+        margin: 0 0 10px;
+        font-family: sans-serif;
+        font-weight: 400;
+      }
       .buy,
       .poll {
         font-size: 1.6rem;
@@ -40,6 +64,17 @@
     <h1>A Closer Look at Functions</h1>
     <button class="buy">Buy new plane 🛩</button>
     <button class="poll">Answer poll ⁉️</button>
+    <div class="promptWindow hidden">
+      <h3 class="questionPoll" >What is your favourite programming language?<h3>
+      <ul>
+        <li class="option0">0: JavaScript</li>
+        <li class="option1">1: Python i jos nesto</li>
+        <li class="option2">2: Rust</li>
+        <li class="option3">3: C</li>
+      </ul>
+      <button id="inputBestLanguage">Enter</button>
+      <input type="text" name="pl" id="inputBestLanguage">
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
