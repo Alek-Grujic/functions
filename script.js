@@ -185,13 +185,13 @@ BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
 GOOD LUCK 😀
 */
 
-const promptWindow = document.querySelector(".promptWindow");
-
 const poll = {
   question: "What is your favorite programming language?",
   options: ["0: JavaScript", "1: Python", "2: Rust", "3: C"],
   answers: new Array(4).fill(0),
-  registerNewAnswer() {},
+  registerNewAnswer() {
+    promptWindow.classList.remove("hidden");
+  },
 };
 
 for (let i = 0; i < poll.options.length; i++) {
@@ -199,10 +199,11 @@ for (let i = 0; i < poll.options.length; i++) {
   document.querySelector(`.option${i}`).textContent = poll.options[i];
 }
 
+// open and close window prompt
+const promptWindow = document.querySelector(".promptWindow");
 const answerBtn = document.querySelector(".poll");
-answerBtn.addEventListener("click", function () {
-  promptWindow.classList.remove("hidden");
-});
+
+answerBtn.addEventListener("click", poll.registerNewAnswer);
 
 document.addEventListener("keydown", function (e) {
   if (e.key === "Escape") {
@@ -214,4 +215,21 @@ document.addEventListener("click", function (e) {
   if (!promptWindow.contains(e.target) && !answerBtn.contains(e.target)) {
     promptWindow.classList.add("hidden");
   }
+});
+
+// btn and input
+
+document.querySelector("#press").addEventListener("click", function () {
+  const anw = document.querySelector("#inputBestLanguage").value;
+  if (anw === "") {
+    console.error("Pick a language!");
+    return;
+  }
+  let numAnw = Number(anw);
+  if (numAnw >= 0 && numAnw <= 3) {
+    poll.answers[numAnw]++;
+    console.log(poll.answers);
+    return;
+  }
+  console.error("Not an option!");
 });
