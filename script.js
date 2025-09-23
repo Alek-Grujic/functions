@@ -185,14 +185,25 @@ BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
 GOOD LUCK 😀
 */
 
+const testData1 = [5, 2, 3];
+const testData2 = [1, 5, 3, 9, 6, 1];
+
 const poll = {
   question: "What is your favorite programming language?",
   options: ["0: JavaScript", "1: Python", "2: Rust", "3: C"],
   answers: new Array(4).fill(0),
   registerNewAnswer() {
     promptWindow.classList.remove("hidden");
+    this.displayResults(result);
+  },
+  displayResults(type) {
+    document
+      .querySelector("#press")
+      .addEventListener("click", type.bind(window, result));
   },
 };
+
+document.querySelector(".questionPoll").textContent = poll.question;
 
 for (let i = 0; i < poll.options.length; i++) {
   console.log(poll.options[i]);
@@ -203,7 +214,7 @@ for (let i = 0; i < poll.options.length; i++) {
 const promptWindow = document.querySelector(".promptWindow");
 const answerBtn = document.querySelector(".poll");
 
-answerBtn.addEventListener("click", poll.registerNewAnswer);
+answerBtn.addEventListener("click", poll.registerNewAnswer.bind(poll));
 
 document.addEventListener("keydown", function (e) {
   if (e.key === "Escape") {
@@ -219,7 +230,22 @@ document.addEventListener("click", function (e) {
 
 // btn and input
 
-document.querySelector("#press").addEventListener("click", function () {
+// document.querySelector("#press").addEventListener("click", function () {
+//   const anw = document.querySelector("#inputBestLanguage").value;
+//   if (anw === "") {
+//     console.error("Pick a language!");
+//     return;
+//   }
+//   let numAnw = Number(anw);
+//   if (numAnw >= 0 && numAnw <= 3) {
+//     poll.answers[numAnw]++;
+//     console.log(poll.answers);
+//     return;
+//   }
+//   console.error("Not an option!");
+// });
+
+function result() {
   const anw = document.querySelector("#inputBestLanguage").value;
   if (anw === "") {
     console.error("Pick a language!");
@@ -228,8 +254,10 @@ document.querySelector("#press").addEventListener("click", function () {
   let numAnw = Number(anw);
   if (numAnw >= 0 && numAnw <= 3) {
     poll.answers[numAnw]++;
-    console.log(poll.answers);
+    let strResult = poll.answers.join(",");
+    console.log(`Poll results are: ${strResult}`);
+    console.log(testData1, testData2);
     return;
   }
   console.error("Not an option!");
-});
+}
