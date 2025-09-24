@@ -252,7 +252,7 @@ function result() {
     return;
   }
   let numAnw = Number(anw);
-  if (numAnw >= 0 && numAnw <= 3) {
+  if (numAnw >= 0 && numAnw <= poll.options.length) {
     poll.answers[numAnw]++;
     let strResult = poll.answers.join(",");
     console.log(`Poll results are: ${strResult}`);
