@@ -1,5 +1,8 @@
 "strict mode";
 
+const testData1 = [5, 2, 3];
+const testData2 = [1, 5, 3, 9, 6, 1];
+
 const poll = {
   question: "What is your favorite programming language?",
   options: ["0: JavaScript", "1: Python", "2: Rust", "3: C"],
@@ -70,3 +73,20 @@ document.addEventListener("click", function (e) {
 document
   .querySelector("#press")
   .addEventListener("click", poll.registerNewAnswer.bind(poll));
+
+// Bonus task
+
+// const objTest1 = {
+//   answers: [5, 2, 3],
+// };
+// const objTest2 = {
+//   answers: [1, 5, 3, 9, 6, 1],
+// };
+
+const arrayObj = [{ answers: [5, 2, 3] }, { answers: [1, 5, 3, 9, 6, 1] }];
+
+const testDataArrays = poll.displayResults;
+
+for (let key of arrayObj) {
+  testDataArrays.call(key, `string`);
+}
