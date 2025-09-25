@@ -5,9 +5,6 @@ const poll = {
   options: ["0: JavaScript", "1: Python", "2: Rust", "3: C"],
   answers: new Array(4).fill(0),
   registerNewAnswer() {
-    this.displayResults();
-  },
-  displayResults() {
     const anw = document.querySelector("#inputBestLanguage").value;
     if (anw === "") {
       console.error("Pick a language!");
@@ -20,11 +17,21 @@ const poll = {
       Number.isInteger(numAnw)
     ) {
       this.answers[numAnw]++;
-      let strResult = this.answers.join(", ");
-      console.log(`Poll results are: ${strResult}`);
+      // this.displayResults(`string`);
+      // this.displayResults(`array`);
+      this.displayResults();
       return;
     }
     console.error("Not an option!");
+  },
+  displayResults(type = `array`) {
+    if (type === `string`) {
+      let strResult = this.answers.join(", ");
+      console.log(`Poll results are: ${strResult}`);
+    }
+    if (type === `array`) {
+      console.log(this.answers);
+    }
   },
 };
 
