@@ -1,7 +1,4 @@
-"strict mode";
-
-const testData1 = [5, 2, 3];
-const testData2 = [1, 5, 3, 9, 6, 1];
+"use strict";
 
 let isPromptOpen = false;
 
@@ -62,19 +59,21 @@ for (let i = 0; i < poll.options.length; i++) {
 
 answerButton.addEventListener("click", poll.registerNewAnswer.bind(poll));
 
+function closeFn() {
+  prompt.classList.add("hidden");
+  isPromptOpen = false;
+  answerButton.disabled = false;
+}
+
 document.addEventListener("keydown", function (e) {
   if (e.key === "Escape") {
-    prompt.classList.add("hidden");
-    isPromptOpen = false;
-    answerButton.disabled = false;
+    closeFn();
   }
 });
 
 document.addEventListener("click", function (e) {
   if (!prompt.contains(e.target) && !answerButton.contains(e.target)) {
-    prompt.classList.add("hidden");
-    isPromptOpen = false;
-    answerButton.disabled = false;
+    closeFn();
   }
 });
 
