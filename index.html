@@ -52,11 +52,21 @@
         position: absolute;
         top: 2rem;
       }
+      .poll:disabled {
+        background-color: #e5e5e5;
+        color: #000;
+        border: #767676 1px solid;
+        border-radius: 2px;
+      }
       .buy {
         left: 2rem;
       }
       .poll {
         right: 2rem;
+      }
+      #bonus {
+        display: block;
+        margin: 10px 0 0;
       }
     </style>
   </head>
@@ -74,6 +84,7 @@
       </ul>
       <button id="press">Enter</button>
       <input type="text" name="pl" id="inputBestLanguage">
+      <button id="bonus">Bonus</button>
     </div>
     <!-- <script src="script.js"></script> -->
     <script src="poll.js"></script>
