@@ -55,7 +55,7 @@ for (let i = 0; i < poll.options.length; i++) {
   document.querySelector(`.option${i}`).textContent = poll.options[i];
 }
 
-// isPromptOpen and close functionalities
+// Open and close functionalities
 
 answerButton.addEventListener("click", poll.registerNewAnswer.bind(poll));
 
@@ -98,3 +98,17 @@ function bonus(objArray) {
 document
   .querySelector("#bonus")
   .addEventListener("click", bonus.bind(bonus, arrayObj));
+
+answerButton.addEventListener("click", function () {
+  window.prompt(this);
+});
+
+// example of IIFE function
+
+(function () {
+  console.log("blabla");
+})();
+
+(() => {
+  console.log("blabla2");
+})();
