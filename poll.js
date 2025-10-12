@@ -112,3 +112,17 @@ answerButton.addEventListener("click", function () {
 (() => {
   console.log("blabla2");
 })();
+
+// example of clousure
+
+function clousure() {
+  let some = 2;
+
+  return function square() {
+    console.log(some * 2);
+  };
+}
+
+let squareOfTwo = clousure();
+
+squareOfTwo();
