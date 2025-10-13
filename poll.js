@@ -152,3 +152,26 @@ squareOfTwo();
     header.style.color = "blue";
   });
 })();
+
+// ------------------------------------
+
+function createCounter() {
+  let count = 0;
+
+  return {
+    increment: () => {
+      console.log(`Count now is: ${++count}`);
+    },
+    decrement: () => {
+      console.log(`Count now is: ${--count}`);
+    },
+  };
+}
+
+const counter = createCounter();
+
+counter.increment();
+
+counter.decrement();
+
+counter.increment();
